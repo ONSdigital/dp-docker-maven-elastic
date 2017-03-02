@@ -1,0 +1,41 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.g4pas.docker</groupId>
+    <artifactId>mavenastic</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Maven Elastic Image</name>
+    <packaging>pom</packaging>
+    <description>Combination of Elastic search and maven to allow maven tests to run against a local ElasticSearch
+        engine
+    </description>
+    <properties>
+        <docker.label.version>${project.version}</docker.label.version>
+        </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.19.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>guidof/mavenastic:${project.version}</name>
+                            <build>
+                                <dockerFileDir>Dockerfile</dockerFileDir>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
