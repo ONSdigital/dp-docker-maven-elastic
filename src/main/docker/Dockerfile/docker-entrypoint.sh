@@ -21,11 +21,16 @@ fi
 
 printf  "waiting for ElasticSearch"
 COUNTER=0
-until [ ${COUNTER} -lt 20 ] || [ $(curl --output /dev/null --silent --head --fail http://elastic:9200) ]; do
+until [ ${COUNTER} -lt 20 ] || [ $(curl --output /dev/null --silent --head --fail http://localhost:9200) ]; do
     printf '.'
     COUNTER=${COUNTER}+1
+    printf "."
     sleep 5
 done
+
+if [ ${COUNTER} -eq 20 ]; then
+  echo "Failed to wait for ElasticSearch
+fi
 
 # As argument is not related to elasticsearch,
 # then assume that user wants to run his own process,
