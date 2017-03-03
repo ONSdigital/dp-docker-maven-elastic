@@ -59,9 +59,7 @@ RUN set -ex \
 
 COPY config ./config
 
-VOLUME /usr/share/elasticsearch/data
-
-ADD localData /usr/share/elasticsearch/data
+COPY localData /usr/share/elasticsearch/data
 
 COPY docker-entrypoint.sh /
 
