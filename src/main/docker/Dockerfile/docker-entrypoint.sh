@@ -14,7 +14,7 @@ if [  "$(id -u)" = '0' ]; then
 		chown -R elasticsearch:elasticsearch "$path"
 	done
 
-	nohup su-exec elasticsearch elasticsearch &
+	nohup gosu elasticsearch elasticsearch &
 else
    nohup exec elasticsearch &
 fi
