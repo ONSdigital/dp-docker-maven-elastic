@@ -29,7 +29,7 @@ until [ ${COUNTER} -lt 20 ] || [ $(curl --output /dev/null --silent --head --fai
 done
 
 if [ ${COUNTER} -eq 20 ]; then
-  echo "Failed to wait for ElasticSearch
+  echo "Failed to wait for ElasticSearch"
 fi
 
 # As argument is not related to elasticsearch,
